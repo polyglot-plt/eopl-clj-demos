@@ -1,0 +1,3 @@
+# Essentials of Programming Languages (3rd Ed) Clojure solutions
+
+Trying to update the code of this great book using Clojure.
