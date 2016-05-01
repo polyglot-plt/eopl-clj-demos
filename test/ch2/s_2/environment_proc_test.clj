@@ -9,17 +9,16 @@
 ;; AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) for more details.
 ;;
 
-(ns ch2.s-2.environment1n_test
+(ns ch2.s-2.environment-proc_test
   (:require [clojure.test :refer :all]
-            [ch2.s-2.environment1n :refer :all]))
+            [ch2.s-2.environment-proc :refer :all]))
 
-(deftest sec-221n
-  (testing "occurs-free? --> Sec 2.2.1"
+(deftest sec-223
+  (testing "occurs-free? --> Sec 2.2.3"
 
     (let [e (extend-env 'd 6
                         (extend-env 'y 8
                                     (extend-env 'x 7
                                                 (extend-env 'y 14
                                                             (empty-env)))))]
-
       (is (= 8 (apply-env e 'y))))))

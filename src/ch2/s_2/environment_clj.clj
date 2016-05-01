@@ -9,7 +9,7 @@
 ;; AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) for more details.
 ;;
 
-(ns ch2.s-2.environment1)
+(ns ch2.s-2.environment-clj)
 
 (def report-no-binding-found
   (fn [search-var]
@@ -21,19 +21,13 @@
 
 (def apply-env
   (fn [env search-var]
-    (cond
-
-      (= (first env) 'empty-env) (report-no-binding-found search-var)
-
-      (= (first env) 'extend-env) (let [[saved-var saved-val saved-env] (rest env)]
-                                    (if (= search-var saved-var)
-                                      saved-val
-                                      (apply-env saved-env search-var)))
-
-      :else (report-invalid-env env))))
+    (let [res (env search-var)]
+      (if-not res
+        (report-invalid-env env)
+        res))))
 
 (def empty-env
-  (fn [] ['empty-env]))
+  (fn [] {}))
 
 (def extend-env
-  (fn [var val env] ['extend-env var val env]))
+  (fn [var val env] (assoc env var val)))
