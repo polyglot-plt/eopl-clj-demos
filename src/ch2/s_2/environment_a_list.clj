@@ -43,3 +43,12 @@
 (def empty-env?
   (fn [env]
     (= env (empty-env))))
+
+(def has-binding?
+  (fn [env s]
+    (if (empty-env? env)
+      false
+      (let [[[saved-var _] saved-env] env]
+        (if (= s saved-var)
+          true
+          (has-binding? saved-env s))))))

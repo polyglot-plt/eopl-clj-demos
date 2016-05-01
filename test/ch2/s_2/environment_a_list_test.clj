@@ -22,4 +22,8 @@
                                                 (extend-env 'y 14
                                                             (empty-env)))))]
 
-      (is (= 8 (apply-env e 'y))))))
+      (is (= 8 (apply-env e 'y)))
+
+      (is (= (has-binding? e 't)) false)
+
+      (is (has-binding? e 'y)))))
