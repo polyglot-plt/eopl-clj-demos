@@ -39,3 +39,7 @@
                             (apply-env saved-env search-var)))
 
       :else (report-invalid-env env))))
+
+(def empty-env?
+  (fn [env]
+    (= env (empty-env))))
