@@ -46,12 +46,10 @@
 
 (def has-binding?
   (fn [env s]
-    (if (empty-env? env)
-      false
-      (let [[[saved-var _] saved-env] env]
-        (if (= s saved-var)
-          true
-          (has-binding? saved-env s))))))
+    (or (not (empty-env? env))
+        (let [[[saved-var _] saved-env] env]
+          (or (= s saved-var)
+              (has-binding? saved-env s))))))
 
 (def extend-env*
   (fn [lvars lvals env]
