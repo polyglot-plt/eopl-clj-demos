@@ -14,7 +14,7 @@
             [ch2.s-2.environment-proc :refer :all]))
 
 (deftest sec-223
-  (testing "occurs-free? --> Sec 2.2.3"
+  (testing "environment procedural representation --> Sec 2.2.3"
 
     (let [e (extend-env 'd 6
                         (extend-env 'y 8

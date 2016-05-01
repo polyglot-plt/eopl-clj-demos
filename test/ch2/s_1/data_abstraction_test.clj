@@ -117,7 +117,6 @@
            #'ch2.s-1.base/successor   dtr/successor
            #'ch2.s-1.base/predecessor dtr/predecessor}
 
-          (dtr/diff-value (dtr/plus diff-tree-value_1
-                                    diff-tree-value_2)))
-
-        (dtr/diff-value diff-tree-value_3))))))
+          (dtr/diff-tree-equals? (dtr/plus diff-tree-value_1
+                                           diff-tree-value_2)
+                                 diff-tree-value_3)))))))

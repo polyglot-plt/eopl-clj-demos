@@ -13,8 +13,8 @@
   (:require [clojure.test :refer :all]
             [ch2.s-2.environment :refer :all]))
 
-(deftest sec-221
-  (testing "occurs-free? --> Sec 2.2.1"
+(deftest sec-222
+  (testing "environment data structure representation --> Sec 2.2.2"
 
     (let [e (extend-env 'd 6
                         (extend-env 'y 8
