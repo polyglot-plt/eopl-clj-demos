@@ -20,10 +20,17 @@
                         (extend-env 'y 8
                                     (extend-env 'x 7
                                                 (extend-env 'y 14
-                                                            (empty-env)))))]
+                                                            (empty-env)))))
+          vrs (list 't 'z 'x 'p)
+
+          vls (list 9 22 5 1)
+
+          e1 (extend-env* vrs vls e)]
 
       (is (= 8 (apply-env e 'y)))
 
       (is (= (has-binding? e 't)) false)
 
-      (is (has-binding? e 'y)))))
+      (is (has-binding? e 'y)) (is (= 5 (apply-env e1 'x)))
+
+      (is (has-binding? e1 't)))))

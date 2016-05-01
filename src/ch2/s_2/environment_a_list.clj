@@ -52,3 +52,12 @@
         (if (= s saved-var)
           true
           (has-binding? saved-env s))))))
+
+(def extend-env*
+  (fn [lvars lvals env]
+    (if-not (seq lvars)
+      env
+      (let [[var & vars] lvars
+            [val & vals] lvals]
+        (recur vars vals
+               (extend-env var val env))))))
