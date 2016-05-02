@@ -31,6 +31,8 @@
 
       (is (= (has-binding? e 't)) false)
 
-      (is (has-binding? e 'y)) (is (= 5 (apply-env e1 'x)))
+      (is (has-binding? e 'y))
+
+      (is (= 5 (apply-env e1 'x)))
 
       (is (has-binding? e1 't)))))
