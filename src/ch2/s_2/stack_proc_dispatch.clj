@@ -14,21 +14,26 @@
 (def empty-stack (fn []
                    (fn [dispatch]
                      (case dispatch
-                       '(:top :pop) (println "Error")
-                       :empty-stack? true))))
+                       '(:top :pop) (fn []
+                                      (println "Error"))
+                       :empty-stack? (fn []
+                                       true)))))
 
 (def push (fn [e s]
             (fn [dispatch]
               (case dispatch
-                :top e
-                :pop s
-                :empty-stack? false))))
+                :top (fn []
+                       e)
+                :pop (fn []
+                       s)
+                :empty-stack? (fn []
+                                false)))))
 
 (def top (fn [s]
-           (s :top)))
+           ((s :top))))
 
 (def pop (fn [s]
-           (s :pop)))
+           ((s :pop))))
 
 (def empty-stack? (fn [s]
-                    (s :empty-stack?)))
+                    ((s :empty-stack?))))
