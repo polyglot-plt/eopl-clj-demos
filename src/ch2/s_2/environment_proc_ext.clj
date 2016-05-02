@@ -26,8 +26,15 @@
 (def empty-env
   (fn []
     (list (fn [search-var]
-            (report-no-binding-found search-var)) (fn []
-                                                    true))))
+            (report-no-binding-found search-var))
+          (fn []
+            true)
+          (fn [search-var]
+            false))))
+
+(def has-binding?
+  (fn [env s]
+    ((nth env 2) s)))
 
 (def extend-env
   (fn [saved-var saved-val saved-env]
@@ -35,8 +42,13 @@
     (list (fn [search-var]
             (if (= search-var saved-var)
               saved-val
-              (apply-env saved-env search-var))) (fn []
-                                                   false))))
+              (apply-env saved-env search-var)))
+          (fn []
+            false)
+          (fn [search-var]
+            (or (= search-var saved-var)
+                (has-binding? saved-env search-var))))))
+
 (def empty-env?
   (fn [env]
     ((fnext env))))

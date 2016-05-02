@@ -13,7 +13,7 @@
   (:require [clojure.test :refer :all]
             [ch2.s-2.environment-proc-ext :refer :all]))
 
-(deftest exercise-2-13
+(deftest exercise-2-13--2-14
   (testing "environment procedural representation extended --> Sec 2.2.3"
 
     (let [e (extend-env 'd 6
@@ -21,4 +21,8 @@
                                     (extend-env 'x 7
                                                 (extend-env 'y 14
                                                             (empty-env)))))]
-      (is (= 8 (apply-env e 'y))))))
+      (is (= 8 (apply-env e 'y)))
+
+      (is (= (has-binding? e 't)) false)
+
+      (is (has-binding? e 'y)))))
