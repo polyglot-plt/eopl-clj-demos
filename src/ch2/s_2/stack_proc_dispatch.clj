@@ -9,27 +9,26 @@
 ;; AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) for more details.
 ;;
 
-(ns ch2.s-2.stack-proc)
+(ns ch2.s-2.stack-proc-dispatch)
 
 (def empty-stack (fn []
-                   (list (fn [e s]
-                           (println "Error"))
-                         (fn []
-                           true))))
+                   (fn [dispatch]
+                     (case dispatch
+                       '(:top :pop) (println "Error")
+                       :empty-stack? true))))
 
 (def push (fn [e s]
-            (list (fn [m]
-                    (m e s))
-                  (fn []
-                    false))))
+            (fn [dispatch]
+              (case dispatch
+                :top e
+                :pop s
+                :empty-stack? false))))
 
 (def top (fn [s]
-           ((first s) (fn [p q]
-                        p))))
+           (s :top)))
 
 (def pop (fn [s]
-           ((first s) (fn [p q]
-                        q))))
+           (s :pop)))
 
 (def empty-stack? (fn [s]
-                    ((fnext s))))
+                    (s :empty-stack?)))

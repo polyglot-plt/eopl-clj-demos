@@ -9,11 +9,11 @@
 ;; AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) for more details.
 ;;
 
-(ns ch2.s-2.stack-proc_test
+(ns ch2.s-2.stack-proc-dispatch_test
   (:require [clojure.test :refer :all]
-            [ch2.s-2.stack-proc :refer :all]))
+            [ch2.s-2.stack-proc-dispatch :refer :all]))
 
-(deftest exercise-2-12-sol-proc
+(deftest exercise-2-12-sol-dispatch
   (testing "stack --> 2.12"
     (let [e (pop
              (pop
