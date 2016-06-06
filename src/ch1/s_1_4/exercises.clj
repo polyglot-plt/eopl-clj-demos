@@ -28,7 +28,7 @@
 ; Exercise 1.36 [* * *]
 
 (defn inc-by-one [l]
-  (if (seq lst)
+  (if (seq l)
     (let [h (first l)
           t (rest l)]
       (cons (list (inc (first h))
