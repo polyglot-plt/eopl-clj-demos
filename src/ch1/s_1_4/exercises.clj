@@ -25,14 +25,12 @@
         (cons (list (second h) (first h)) (invert t)))
       '())))
 
-
 ; Exercise 1.36 [* * *]
 
 (defn inc-by-one [l]
   (if (seq lst)
     (let [h (first l)
-          t (rest l)
-          ]
+          t (rest l)]
       (cons (list (inc (first h))
                   (second h))
             (inc-by-one t)))
