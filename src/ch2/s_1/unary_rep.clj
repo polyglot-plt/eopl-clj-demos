@@ -13,6 +13,8 @@
 
 ;; Unary Representation
 ;; page 33
+
+;; tag::unary-rep[]
 (def zero (fn [] '()))
 (def is-zero? (fn [n] (empty? n)))
 (def successor (fn [n] (cons true n)))
@@ -25,3 +27,4 @@
 (def my-int->clj-int (fn [x]
                        (if (is-zero? x) 0
                            (+ 1 (my-int->clj-int (predecessor x))))))
+;; end::unary-rep[]

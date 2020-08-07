@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# https://github.com/jonase/eastwood
+# eastwood - a Clojure lint tool
+clj -A:eastwood

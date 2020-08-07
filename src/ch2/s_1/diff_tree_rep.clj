@@ -14,6 +14,7 @@
 ;; Diff-tree representation
 ;; page 34
 
+;; tag::diff-tree-rep[]
 (def zero (fn []
             '(diff (one) (one))))
 
@@ -44,3 +45,4 @@
 
 (def diff-tree-equals? (fn [x y]
                          (= (diff-value x) (diff-value y))))
+;; end::diff-tree-rep[]

@@ -11,14 +11,16 @@
 
 (ns ch1.s-1-2-4.lambda-occurs-free)
 
+;; tag::occurs-free[]
 (def occurs-free?
   (fn [var exp]
     (cond
-      (symbol? exp) (= var exp)
+      (symbol? exp) (= var exp)                                 ;; <1>
 
-      (= (first exp) 'fn) (and
+      (= (first exp) 'fn) (and                                  ;; <2>
                            (not= var (ffirst (rest exp)))
                            (occurs-free? var (rest (rest exp))))
-      :else (or
+      :else (or                                                 ;; <3>
              (occurs-free? var (first exp))
              (occurs-free? var (first (rest exp)))))))
+;; end::occurs-free[]

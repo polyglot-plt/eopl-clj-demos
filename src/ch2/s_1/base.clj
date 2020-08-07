@@ -16,7 +16,9 @@
          ^:dynamic successor
          ^:dynamic predecessor)
 
+;; tag::plus[]
 (def plus (fn [x y]
             (if (is-zero? x)
               y
               (successor (plus (predecessor x) y)))))
+;; end::plus[]

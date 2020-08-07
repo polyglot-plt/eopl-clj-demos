@@ -11,6 +11,9 @@
 
 (ns ch2.s-2.environment-proc-ext)
 
+;; Exercises 2.13 & 2.14
+
+;; tag::environment[]
 (def report-no-binding-found
   (fn [search-var]
     (println "Error:" 'apply-env (format "No binding for %s" search-var))))
@@ -52,3 +55,4 @@
 (def empty-env?
   (fn [env]
     ((fnext env))))
+;; end::environment[]

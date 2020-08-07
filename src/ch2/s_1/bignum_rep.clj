@@ -14,6 +14,8 @@
 (def N 4)
 ;; Bignum representation
 ;; page 34
+
+;; tag::bignum-rep[]
 (def zero (fn [] '(0)))
 (def is-zero? (fn [n] (every? #(= 0 %) n)))
 
@@ -33,3 +35,4 @@
                        (cons (dec N)
                              (predecessor t))
                        (cons (dec p) t)))))
+;; end::bignum-rep[]

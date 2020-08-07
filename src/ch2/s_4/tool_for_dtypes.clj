@@ -10,39 +10,40 @@
 
 (ns ch2.s-4.tool-for-dtypes)
 
-(defmacro define-datatype [type-name type-predicate-name & variants]
-  (let [predicate `(def ~type-predicate-name
-                     (fn [exp#] (= (:type exp#) ~(keyword type-name))))
+(comment
+  (defmacro define-datatype [type-name type-predicate-name & variants]
+    (let [predicate `(def ~type-predicate-name
+                       (fn [exp#] (= (:type exp#) ~(keyword type-name))))
 
-        constructors (for [[n & r] variants]
-                       (let [params (vec (for [[a b] r] a))
-                             conditions (for [[a b] r] (list b a))
-                             data (into {:type    :lc-exp
-                                         :variant (keyword n)} (for [[a _] r] [(keyword a) a]))]
+          constructors (for [[n & r] variants]
+                         (let [params (vec (for [[a b] r] a))
+                               conditions (for [[a b] r] (list b a))
+                               data (into {:type    :lc-exp
+                                           :variant (keyword n)} (for [[a _] r] [(keyword a) a]))]
 
-                         `(def ~n
-                            (fn ~params
-                              (if (and
-                                   ~@conditions)
-                                ~data
-                                false)))))]
+                           `(def ~n
+                              (fn ~params
+                                (if (and
+                                     ~@conditions)
+                                  ~data
+                                  false)))))]
 
-    (concat (list 'do predicate)
-            constructors)))
+      (concat (list 'do predicate)
+              constructors)))
 
-(def identifier? symbol?)
+  (def identifier? symbol?)
 
-(define-datatype lc-exp lc-exp?
-  [var-exp
-   [var identifier?]]
+  (define-datatype lc-exp lc-exp?
+    [var-exp
+     [var identifier?]]
 
-  [lambda-exp
-   [bound-var identifier?]
-   [body lc-exp?]]
+    [lambda-exp
+     [bound-var identifier?]
+     [body lc-exp?]]
 
-  [app-exp
-   [rator lc-exp?]
-   [rand lc-exp?]])
+    [app-exp
+     [rator lc-exp?]
+     [rand lc-exp?]]))
 
 {:type    :lc-exp
  :variant :var-exp

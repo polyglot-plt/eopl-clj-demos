@@ -13,12 +13,13 @@
 
 ; Exercise 1.34 [* * *]
 
-(defn path-aux [n t paths]
-  (if (= n (contents-of t))
-    paths
-    (if (< n (contents-of t))
-      (path-aux n (lson t) (cons 'left paths))
-      (path-aux n (rson t) (cons 'right paths)))))
+(comment
+  (defn path-aux [n t paths]
+    (if (= n (contents-of t))
+      paths
+      (if (< n (contents-of t))
+        (path-aux n (lson t) (cons 'left paths))
+        (path-aux n (rson t) (cons 'right paths)))))
 
-(defn path [n t]
-  (reverse (path-aux n t '())))
+  (defn path [n t]
+    (reverse (path-aux n t '()))))

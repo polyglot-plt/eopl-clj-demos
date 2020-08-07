@@ -11,6 +11,8 @@
 
 (ns ch2.s-2.stack-proc)
 
+; Exercise 2.12
+;; tag::stack[]
 (def empty-stack (fn []
                    (list (fn [e s]
                            (println "Error"))
@@ -33,3 +35,4 @@
 
 (def empty-stack? (fn [s]
                     ((fnext s))))
+;; end::stack[]

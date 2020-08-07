@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+option=${1:-c}
+
+case ${option} in
+
+      c)
+        action=check
+      ;;
+
+      f)
+        action=fix
+      ;;
+
+esac
+
+clojure -Sdeps '{:deps {cljfmt {:mvn/version "0.6.8"}}}' \
+  -m cljfmt.main $action

@@ -1,0 +1,21 @@
+{:deps
+ {
+  instaparse      {:mvn/version "1.4.10"}
+  com.rpl/specter {:mvn/version "1.1.3"}
+  }
+
+ ; https://github.com/cognitect-labs/test-runner
+ :aliases {
+           :test {:extra-paths ["test"]
+                  :extra-deps {com.cognitect/test-runner {:git/url "https://github.com/cognitect-labs/test-runner.git"
+                                                          :sha "209b64504cb3bd3b99ecfec7937b358a879f55c1"}}
+                  :main-opts ["-m" "cognitect.test-runner"]}
+
+           :eastwood
+                 {:main-opts ["-m" "eastwood.lint" {:source-paths ["src"] :continue-on-exception true}]
+                  :extra-deps {jonase/eastwood {:mvn/version "RELEASE"}}}
+         ;  clj -A:eastwood
+
+           }
+
+ }

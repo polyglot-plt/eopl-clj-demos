@@ -11,6 +11,7 @@
 
 (ns ch2.s-2.environment-clj)
 
+;; tag::environment[]
 (def report-no-binding-found
   (fn [search-var]
     (println "Error:" 'apply-env (format "No binding for %s" search-var))))
@@ -31,3 +32,4 @@
 
 (def extend-env
   (fn [var val env] (assoc env var val)))
+;; end::environment[]

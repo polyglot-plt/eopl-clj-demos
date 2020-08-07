@@ -13,15 +13,19 @@
 
 (declare subst)
 
+;; tag::subst-in-s-exp[]
 (def subst-in-s-exp
   (fn [new old sexp]
     (if (symbol? sexp)
       (if (= sexp old) new sexp)
       (subst new old sexp))))
+;; end::subst-in-s-exp[]
 
+;; tag::subst[]
 (def subst
   (fn [new old slist]
-    (if (not (seq slist))
+    (if (not (seq slist))                           ;; <1>
       '()
-      (cons (subst-in-s-exp new old (first slist))
+      (cons (subst-in-s-exp new old (first slist))  ;; <2>
             (subst new old (rest slist))))))
+;; end::subst[]

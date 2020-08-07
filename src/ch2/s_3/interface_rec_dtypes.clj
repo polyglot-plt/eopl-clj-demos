@@ -60,6 +60,7 @@
   (fn [exp]
     (first (rest exp))))
 
+;; tag::occurs-free?[]
 (def occurs-free?
   (fn [search-var exp]
     (cond
@@ -76,3 +77,4 @@
       :else (or
              (occurs-free? search-var (app-exp->rator exp))
              (occurs-free? search-var (app-exp->rand exp))))))
+;; end::occurs-free?[]

@@ -11,6 +11,8 @@
 
 (ns ch2.s-2.environment-ribcage)
 
+;; Exercise 2.11
+;; tag::environment[]
 (def report-no-binding-found
   (fn [search-var]
     (println "Error:" 'apply-env (format "No binding for %s" search-var))))
@@ -63,3 +65,4 @@
                           (recur saved-vars-rest))))]
           (or res
               (has-binding? saved-env s))))))
+;; end::environment[]

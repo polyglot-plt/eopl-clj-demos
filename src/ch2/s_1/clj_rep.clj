@@ -13,7 +13,9 @@
 
 ;; Clojure number representation
 ;; page 33
+;; tag::clj-rep[]
 (def zero (fn [] 0))
 (def is-zero? (fn [n] (zero? n)))
 (def successor (fn [n] (+ n 1)))
 (def predecessor (fn [n] (- n 1)))
+;; end::clj-rep[]
